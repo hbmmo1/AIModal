@@ -1,0 +1,21 @@
+================================================================================
+RAW PROMPT 01: CLEANUP & GITIGNORE (2026-10-12 16:17)
+================================================================================
+1. làm sạch code, xoá file  rác, xoá file temp cho tôi
+2. gom thư mục vào .agents và bỏ tải lên github nếu tải lên
+dist
+build
+
+================================================================================
+RAW PROMPT 02: MIGRATION SPEC & UPDATEDONE HUB (2026-10-12 16:37)
+================================================================================
+Dựa vào đặc tả kĩ thuật ở:
+C:\Intel\Laragon\www\002_Log\.agents\prompt\promptinfo
+
+cập nhật những file ở, đổi tên file .md nếu cần cho phù hợp, cấu trúc chuẩn như đặc tả kỉ thuật
+.agents\guide
+
+vào update
+vào updatedone theo chỉ dẫn, có nút mở file md, giữ nguyên file md không rút gọn viết lại, còn ở ngoài index thì có thể mô tả, lấy thông tin theo chỉ dẫn
+bỏ file gốc khi đã di chuyển vào udpate thành công
+================================================================================

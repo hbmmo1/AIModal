@@ -1,0 +1,63 @@
+{
+  "id": "example-web",
+  "name": "Mở Chrome và tìm kiếm",
+  "description": "Workflow mẫu: Mở Chrome → Navigate → Tìm kiếm",
+  "nodes": [
+    {
+      "id": "n1",
+      "name": "Mở Chrome",
+      "node_type": "action",
+      "enabled": true,
+      "pos_x": 100,
+      "pos_y": 100,
+      "next_nodes": ["n2"],
+      "params": {
+        "action_type": "open_application",
+        "target_path": "https://google.com"
+      }
+    },
+    {
+      "id": "n2",
+      "name": "Chờ trang tải",
+      "node_type": "delay",
+      "enabled": true,
+      "pos_x": 300,
+      "pos_y": 100,
+      "next_nodes": ["n3"],
+      "params": {
+        "delay_ms": 2000
+      }
+    },
+    {
+      "id": "n3",
+      "name": "Gõ từ khoá tìm kiếm",
+      "node_type": "action",
+      "enabled": true,
+      "pos_x": 500,
+      "pos_y": 100,
+      "next_nodes": ["n4"],
+      "params": {
+        "action_type": "type_text",
+        "text_content": "AI automation tools 2026",
+        "paste_mode": true
+      }
+    },
+    {
+      "id": "n4",
+      "name": "Nhấn Enter",
+      "node_type": "action",
+      "enabled": true,
+      "pos_x": 700,
+      "pos_y": 100,
+      "next_nodes": [],
+      "params": {
+        "action_type": "key_press",
+        "key_string": "enter"
+      }
+    }
+  ],
+  "start_node_id": "n1",
+  "max_iterations": 1,
+  "timeout_seconds": 60,
+  "stop_on_error": true
+}

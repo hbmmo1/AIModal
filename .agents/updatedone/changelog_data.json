@@ -1,0 +1,252 @@
+{
+  "project_name": "AI Claw — Smart Multi-AI Desktop Automation Platform",
+  "last_updated": "2026-10-12 16:45:00",
+  "current_version": "v2.5.0",
+  "total_items": 22,
+  "features": [
+    {
+      "id": "FEAT-001",
+      "name": "Multi-AI Engine 79 Models / 16 Providers",
+      "version": "v2.0.0",
+      "updated_at": "2026-08-30 01:30:00",
+      "prompt": "Tích hợp đa nhà cung cấp AI trong một app duy nhất: Gemini, Claude, OpenAI, DeepSeek, Groq, OpenRouter",
+      "plan": "Xây dựng ModelRegistry singleton, phân hạng giá token, cơ chế streaming và auto-fallback 404",
+      "walkthrough": "Kiểm thử streaming 100% không crash, chuyển đổi model mượt mà",
+      "result": "Hỗ trợ 79 models, 16 providers với rate limit rotation",
+      "doc_file": "features/multi_ai_engine.md",
+      "category": "core_logic",
+      "category_label": "Code Lõi AI",
+      "tech_specs": {
+        "controller": "GeminiAIEngine",
+        "layout": "ChatPanel",
+        "router": "Direct API / SDK",
+        "files": ["core/ai_engine.py", "core/model_registry.py", "core/key_manager.py"]
+      },
+      "layout_impacts": ["chat_panel", "settings_dialog"],
+      "layout_labels": ["Khung Chat AI", "Cài Đặt Mô Hình"]
+    },
+    {
+      "id": "FEAT-002",
+      "name": "Desktop Automation & Visual Workflow Runner",
+      "version": "v1.5.0",
+      "updated_at": "2026-08-28 10:00:00",
+      "prompt": "Tự động hoá thao tác chuột, phím, chụp màn hình và phối hợp kịch bản",
+      "plan": "Tích hợp PyAutoGUI, fail-safe góc màn hình, workflow JSON runner",
+      "walkthrough": "Chạy thử kịch bản web scraping và click tự động chuẩn xác",
+      "result": "Tự động hoá ổn định không trượt toạ độ",
+      "doc_file": "features/desktop_automation.md",
+      "category": "automation",
+      "category_label": "Tự Động Hoá",
+      "tech_specs": {
+        "controller": "ActionExecutor",
+        "layout": "AutomationPanel",
+        "router": "Internal Event",
+        "files": ["core/action_executor.py", "core/workflow_models.py", "ui/automation_panel.py"]
+      },
+      "layout_impacts": ["automation_panel"],
+      "layout_labels": ["Panel Tự Động Hoá"]
+    },
+    {
+      "id": "FEAT-003",
+      "name": "Screen Analyzer MSS & Siêu Nén WebP Tốc Độ Cao",
+      "version": "v1.2.0",
+      "updated_at": "2026-08-27 10:42:00",
+      "prompt": "Chụp màn hình siêu nhanh và nén ảnh gửi cho AI Vision phân tích",
+      "plan": "Sử dụng MSS chụp đa màn hình và nén WebP chất lượng cao trong ~50ms",
+      "walkthrough": "Thời gian chụp và nén đạt 45ms, dung lượng giảm 80% so với PNG",
+      "result": "Tích hợp chụp nhanh và gửi ngay vào khung chat AI",
+      "doc_file": "features/multi_ai_engine.md",
+      "category": "media",
+      "category_label": "Xử Lý Ảnh",
+      "tech_specs": {
+        "controller": "ScreenAnalyzer",
+        "layout": "ChatPanel",
+        "router": "Internal Pipeline",
+        "files": ["core/screen_analyzer.py"]
+      },
+      "layout_impacts": ["chat_panel"],
+      "layout_labels": ["Chụp Màn Hình"]
+    },
+    {
+      "id": "FEAT-004",
+      "name": "Xác Thực & Quản Lý Tài Khoản Bảo Mật PBKDF2",
+      "version": "v2.5.0",
+      "updated_at": "2026-08-30 01:33:00",
+      "prompt": "Thêm tính năng bảo mật đăng nhập, mặc định tắt, có bảng quản lý tài khoản",
+      "plan": "Tạo LoginDialog không autofill tài khoản, mã hoá PBKDF2 salt 16 bytes",
+      "walkthrough": "Đăng nhập thành công, nhật ký ghi log đầy đủ, switch on/off mượt mà",
+      "result": "Hệ thống bảo mật chuẩn công nghiệp",
+      "doc_file": "features/account_auth_security.md",
+      "category": "security",
+      "category_label": "Bảo Mật",
+      "tech_specs": {
+        "controller": "StateManager",
+        "layout": "LoginDialog",
+        "router": "Auth Guard",
+        "files": ["ui/login_dialog.py", "core/state_manager.py", "main.py"]
+      },
+      "layout_impacts": ["login_modal", "settings_dialog"],
+      "layout_labels": ["Màn Hình Đăng Nhập", "Tab Quản Lý Tài Khoản"]
+    },
+    {
+      "id": "FEAT-005",
+      "name": "Floating Quick Access Mini Widget (Always On Top)",
+      "version": "v2.5.0",
+      "updated_at": "2026-08-30 01:34:00",
+      "prompt": "Tạo nút nổi mini luôn ghim trên màn hình để thao tác nhanh",
+      "plan": "Xây dựng Frameless QWidget kéo thả tự do, ghi nhớ toạ độ vào SQLite",
+      "walkthrough": "Thao tác kéo mượt, nút chụp ảnh và mở nhanh hoạt động chính xác",
+      "result": "Tiện ích nổi siêu gọn nhẹ",
+      "doc_file": "features/floating_widget_quick_access.md",
+      "category": "interface",
+      "category_label": "Giao Diện",
+      "tech_specs": {
+        "controller": "FloatingWidget",
+        "layout": "FloatingWidget",
+        "router": "Desktop Overlay",
+        "files": ["ui/floating_widget.py", "ui/main_window.py"]
+      },
+      "layout_impacts": ["floating_dock"],
+      "layout_labels": ["Widget Nổi Màn Hình"]
+    },
+    {
+      "id": "FEAT-006",
+      "name": "Theme Tương Phản Chuẩn WCAG, 4 UI Densities & Toast 6 Vị Trí",
+      "version": "v2.5.0",
+      "updated_at": "2026-08-30 01:35:00",
+      "prompt": "Tối ưu tương phản sáng/tối, hỗ trợ nhiều cỡ màn hình và tuỳ biến vị trí Toast",
+      "plan": "Bảng màu COLORS 30 keys, 4 mật độ giao diện, hàng đợi Toast đa góc",
+      "walkthrough": "Giao diện không còn chìm màu, chuyển đổi theme tức thì",
+      "result": "Trải nghiệm thị giác cao cấp",
+      "doc_file": "features/ui_theme_density_toast.md",
+      "category": "interface",
+      "category_label": "Giao Diện",
+      "tech_specs": {
+        "controller": "ThemeEngine",
+        "layout": "MainWindow",
+        "router": "App Stylesheet",
+        "files": ["ui/theme.py", "ui/toast.py", "ui/settings_dialog.py"]
+      },
+      "layout_impacts": ["theme_engine", "toast_overlay"],
+      "layout_labels": ["Giao Diện & Toast"]
+    }
+  ],
+  "fixes": [
+    {
+      "id": "FIX-001",
+      "name": "Khắc Phục Lỗi Đóng Băng Giao Diện (Not Responding) Khi Mở Settings",
+      "version": "v2.4.0",
+      "updated_at": "2026-08-29 23:00:00",
+      "root_cause": "Constructor gọi nạp CSDL nặng, ComboBox bắn cascade signals 16 lần",
+      "solution": "Deferred loading qua QTimer singleShot, combo.blockSignals, processEvents",
+      "doc_file": "fixes/fix_ui_not_responding_freeze.md",
+      "status": "Đã giải quyết",
+      "category": "performance",
+      "files": ["ui/settings_dialog.py", "ui/main_window.py"]
+    },
+    {
+      "id": "FIX-002",
+      "name": "Khắc Phục Lỗi 404 NOT_FOUND Google GenAI & Smart Fallback",
+      "version": "v2.3.0",
+      "updated_at": "2026-08-28 20:00:00",
+      "root_cause": "Model preview chưa sẵn sàng trên một số endpoint vùng, gây lỗi 404",
+      "solution": "Bảng GEMINI_MODEL_MAP và tự động chuyển sang gemini-2.0-flash tức thì",
+      "doc_file": "fixes/fix_gemini_404_smart_fallback.md",
+      "status": "Đã giải quyết",
+      "category": "ai_api",
+      "files": ["core/ai_engine.py", "core/model_registry.py"]
+    },
+    {
+      "id": "FIX-003",
+      "name": "Sửa Lỗi SQLite Table Migration api_keys",
+      "version": "v2.1.0",
+      "updated_at": "2026-08-28 03:20:00",
+      "root_cause": "Chuyển từ gemini_api_keys sang bảng chung api_keys thiếu script migrate",
+      "solution": "Tự động phát hiện cấu trúc cũ và migrate sang schema mới khi khởi chạy",
+      "doc_file": "fixes/fix_sqlite_db_migration.md",
+      "status": "Đã giải quyết",
+      "category": "database",
+      "files": ["core/key_manager.py"]
+    },
+    {
+      "id": "FIX-004",
+      "name": "Xử Lý NameError Thiếu Import Qt Widgets",
+      "version": "v2.0.1",
+      "updated_at": "2026-08-27 18:45:00",
+      "root_cause": "Thiếu import QGroupBox, QGridLayout trực tiếp từ PyQt6.QtWidgets",
+      "solution": "Bổ sung đầy đủ import và thêm vào checklist bắt buộc kiểm thử",
+      "doc_file": "fixes/fix_missing_qt_imports.md",
+      "status": "Đã giải quyết",
+      "category": "ui_bug",
+      "files": ["ui/main_window.py", "ui/knowledge_panel.py"]
+    }
+  ],
+  "plans": [
+    {
+      "id": "PLAN-001",
+      "name": "AI Claw — Nền Tảng Tự Động Hoá Thông Minh Bằng AI (Master Plan)",
+      "file": "plans/ai_claw_platform_plan.md",
+      "category": "architecture",
+      "description": "Kế hoạch kiến trúc nền tảng tổng thể, phân rã các module core, UI và tích hợp Gemini Multi-AI."
+    },
+    {
+      "id": "PLAN-002",
+      "name": "Kế Hoạch Triển Khai Xác Thực Tài Khoản, Theme & Floating Widget",
+      "file": "plans/account_auth_theme_widget_toast_plan.md",
+      "category": "security_ui",
+      "description": "Chi tiết phương án kỹ thuật nâng cấp xác thực PBKDF2, tối ưu bảng màu tương phản, Floating Widget và vị trí Toast."
+    },
+    {
+      "id": "PLAN-003",
+      "name": "Kế Hoạch Triển Khai Xác Thực Tài Khoản (Phiên Bản Bổ Sung)",
+      "file": "plans/account_auth_theme_widget_toast_v2_plan.md",
+      "category": "security_ui",
+      "description": "Phiên bản bổ sung danh mục files thay đổi chi tiết giữa Core Layer và UI Layer."
+    },
+    {
+      "id": "PLAN-004",
+      "name": "Kế Hoạch Nâng Cấp & Hoàn Thiện Canva Tool Studio",
+      "file": "plans/canva_tool_studio_plan.md",
+      "category": "extension",
+      "description": "Quy chuẩn nén video/PPTX an toàn cho Microsoft Office, tối ưu hoá đa luồng nền QThread."
+    }
+  ],
+  "walkthroughs": [
+    {
+      "id": "WALK-001",
+      "name": "Tổng Kết Nâng Cấp Toàn Diện Ứng Dụng AI Claw",
+      "file": "walkthroughs/ai_claw_upgrade_walkthrough.md",
+      "category": "acceptance",
+      "description": "Báo cáo nghiệm thu hoàn tất 4 nhóm tính năng: Xác thực đăng nhập, Theme tương phản cao, Floating Widget và tùy chỉnh Toast."
+    },
+    {
+      "id": "WALK-002",
+      "name": "Tổng Kết Nâng Cấp AI Claw (Bản Báo Cáo Kỹ Thuật Chi Tiết)",
+      "file": "walkthroughs/ai_claw_upgrade_v1_walkthrough.md",
+      "category": "acceptance",
+      "description": "Báo cáo nghiệm thu các bước kiểm thử chức năng và luồng xử lý chi tiết."
+    }
+  ],
+  "prompt_inputs": [
+    {
+      "id": "PROMPT-001",
+      "title": "Làm Sạch Code, Xoá File Rác & Thiết Lập Gitignore",
+      "file": "promptinput/raw_prompts.txt",
+      "description": "Yêu cầu dọn dẹp thư mục build/dist 317MB, xoá __pycache__, app_settings.json thừa và cấu hình .gitignore."
+    },
+    {
+      "id": "PROMPT-002",
+      "title": "Đồng Bộ Tài Liệu Kỹ Thuật Chuẩn Kiến Trúc .agents/updatedone",
+      "file": "promptinput/prompt_input_history.md",
+      "description": "Chuyển đổi toàn bộ tài liệu từ guide sang cấu trúc chuẩn mực với SPA viewer, giữ nguyên 100% nội dung markdown."
+    }
+  ],
+  "prompts_apply_all": [
+    {
+      "id": "STD-001",
+      "title": "Quy Chuẩn Tái Sử Dụng Kỹ Thuật Đa Dự Án Desktop Python & AI",
+      "file": "prompt_all/prompt_apply_all_standards.md",
+      "description": "Đúc kết kiến trúc phân tầng, giải pháp chống đơ UI (Zero-Freeze), API key security và quản lý tài liệu tập trung."
+    }
+  ]
+}

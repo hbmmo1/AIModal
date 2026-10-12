@@ -1,0 +1,66 @@
+# ============================================================
+# AI CLAW — Cấu hình chính (Multi-AI Edition)
+# ============================================================
+
+app:
+  name: "AI Claw"
+  version: "1.2.0"
+  language: "vi"           # vi | en
+  theme: "dark"            # dark | light
+  minimize_to_tray: true
+  show_splash: true
+
+# Cấu hình Gemini (backward compatible)
+gemini:
+  api_key: ""              # Ưu tiên đọc từ .env, fallback sang đây
+  model_name: ""           # Để trống = auto chọn model mặc định từ registry
+  temperature: 0.7
+  top_p: 0.95
+  max_output_tokens: 8192
+
+# Cấu hình Multi-Provider (Thêm key ở .env hoặc ở đây)
+providers:
+  openai:
+    api_key: ""            # sk-xxxxxxxxxx (hoặc set OPENAI_API_KEY trong .env)
+  anthropic:
+    api_key: ""            # sk-ant-xxxxxxx (hoặc set ANTHROPIC_API_KEY trong .env)
+  deepseek:
+    api_key: ""            # sk-xxxxxxxxxx (hoặc set DEEPSEEK_API_KEY trong .env)
+  qwen:
+    api_key: ""            # sk-xxxxxxxxxx (hoặc set QWEN_API_KEY trong .env)
+  mistral:
+    api_key: ""            # (hoặc set MISTRAL_API_KEY trong .env)
+  cohere:
+    api_key: ""            # (hoặc set COHERE_API_KEY trong .env)
+  meta:
+    api_key: ""            # Together AI key (hoặc set META_API_KEY trong .env)
+  xai:
+    api_key: ""            # xai-xxxxxxx (hoặc set XAI_API_KEY trong .env)
+
+automation:
+  default_delay_ms: 300
+  countdown_seconds: 3
+  stop_on_error: true
+  screenshot_quality: 85
+
+hotkeys:
+  start: "f8"
+  pause_resume: "f9"
+  stop: "f10"
+  screenshot: "ctrl+shift+s"
+  quick_chat: "ctrl+shift+a"
+
+file_processing:
+  max_file_size_mb: 50
+  supported_extensions:
+    - ".txt"
+    - ".pdf"
+    - ".docx"
+    - ".xlsx"
+    - ".csv"
+    - ".json"
+    - ".md"
+    - ".py"
+    - ".jpg"
+    - ".png"
+

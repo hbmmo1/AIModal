@@ -1,0 +1,24 @@
+# AI & Google GenAI
+google-genai>=1.0.0
+Pillow>=10.2.0
+
+# GUI Framework
+PyQt6>=6.6.0
+
+# Desktop Automation
+pyautogui>=0.9.54
+pyperclip>=1.8.2
+pywin32>=306
+pygetwindow>=0.0.9
+pynput>=1.7.6
+keyboard>=0.13.5
+
+# Screenshot
+mss>=9.0.0
+
+# Config & Data
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# Network
+requests>=2.31.0
